@@ -39,10 +39,10 @@ const PORT = process.env.PORT || 5001;
       }
     });
 
-    // get all of data from the festivals collection
+    // get all of data from the performers collection
     app.get("/performers", async (req, res) => {
       try {
-        const festivals = await performersCollection.find({}).toArray();
+        const performers = await performersCollection.find({}).toArray();
         res.status(200).json(performers);
       } catch (error) {
         console.error("Error fetching performers:", error.message);
