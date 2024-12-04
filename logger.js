@@ -1,6 +1,6 @@
 import winston from "winston";
 import DailyRotateFile from "winston-daily-rotate-file";
-import { format } from "date-fns"; // Optional for formatting
+import { format } from "date-fns";
 
 const customLevels = {
   levels: {
@@ -27,9 +27,8 @@ const logger = winston.createLogger({
   format: winston.format.combine(
     winston.format.timestamp({
       format: () => {
-        // Adjust to your local time zone
         return new Date().toLocaleString("en-US", {
-          timeZone: "America/Chicago", // Replace with your local timezone
+          timeZone: "America/Chicago",
         });
       },
     }),
@@ -65,7 +64,6 @@ const logger = winston.createLogger({
   ],
 });
 
-// Apply custom colors for levels
 winston.addColors(customLevels.colors);
 
 export default logger;

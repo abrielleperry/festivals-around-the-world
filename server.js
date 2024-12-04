@@ -49,9 +49,13 @@ const PORT = process.env.PORT || 5001;
       }
     });
 
+    /* example usage:
+    http://localhost:5001/festivals/674f38206160cd3d943298e0
+    */
     app.get("/festivals/:id", async (req, res) => {
       const { id } = req.params;
 
+      console.log(`Request received for festival ID: ${id}`);
       if (!ObjectId.isValid(id)) {
         return res.status(400).json({ message: "Invalid festival ID" });
       }
@@ -59,45 +63,124 @@ const PORT = process.env.PORT || 5001;
       try {
         const cachedFestival = await getCache(id);
         if (cachedFestival) {
-          logger.info(`Cache hit for festival ID: ${id}`);
-          return res.status(200).json(JSON.parse(cachedFestival));
+          console.log(`Cache hit for festival ID: ${id}`);
+          return res.status(200).json(cachedFestival);
         }
 
+        console.log(`Cache miss for festival ID: ${id}, fetching from database...`);
         const festival = await festivalsCollection.findOne({ _id: new ObjectId(id) });
         if (!festival) {
           return res.status(404).json({ message: "Festival not found" });
         }
 
-        await setCache(id, festival);
-        logger.info(`Cache miss for festival ID: ${id}. Data cached.`);
+        await setCache(id, festival, 3600);
+        console.log(`Data cached for festival ID: ${id}`);
         res.status(200).json(festival);
       } catch (error) {
-        logger.error("Error fetching festival:", error.message);
+        console.error(`Error in /festivals/:id for ID: ${id}`, error);
         res.status(500).json({ message: "Failed to fetch festival" });
       }
     });
 
+
+    /* example usage:
+    http://localhost:5001/festivals?page=1&limit=5
+    http://localhost:5001/festivals
+    */
     app.get("/festivals", async (req, res) => {
+      const { page = 1, limit = 10 } = req.query;
+
+      // Ensure `page` and `limit` are integers
+      const pageNum = parseInt(page, 10);
+      const limitNum = parseInt(limit, 10);
+
+      if (isNaN(pageNum) || isNaN(limitNum) || pageNum <= 0 || limitNum <= 0) {
+        logger.warn("Invalid page or limit values provided.");
+        return res.status(400).json({ message: "Invalid page or limit values" });
+      }
+
       try {
-        const festivals = await festivalsCollection.find({}).toArray();
-        logger.info(`Fetched ${festivals.length} festivals`);
-        res.status(200).json(festivals);
+        // Fetch paginated festivals
+        const festivals = await festivalsCollection
+          .find({})
+          .skip((pageNum - 1) * limitNum) // Skip documents for previous pages
+          .limit(limitNum) // Limit the number of results
+          .toArray();
+
+        const total = await festivalsCollection.countDocuments(); // Total number of documents
+
+        // Log the result
+        logger.info(
+          `Fetched ${festivals.length} festivals for page ${pageNum} with limit ${limitNum}`
+        );
+
+        // Return paginated response
+        res.status(200).json({
+          page: pageNum,
+          limit: limitNum,
+          totalPages: Math.ceil(total / limitNum),
+          totalItems: total,
+          data: festivals,
+        });
       } catch (error) {
-        logger.error("Error fetching festivals:", error.message);
+        // Log the error
+        logger.error("Error fetching paginated festivals:", error.message);
+
+        // Return the error response
         res.status(500).json({ message: "Failed to fetch festivals" });
       }
     });
 
+
+
+    /* example usage:
+    http://localhost:5001/performers?page=2&limit=10
+    http://localhost:5001/performers
+    */
     app.get("/performers", async (req, res) => {
+      const { page = 1, limit = 10 } = req.query;
+
+      const pageNum = parseInt(page, 10);
+      const limitNum = parseInt(limit, 10);
+
+      if (isNaN(pageNum) || isNaN(limitNum) || pageNum <= 0 || limitNum <= 0) {
+        logger.warn("Invalid page or limit values provided for performers.");
+        return res.status(400).json({ message: "Invalid page or limit values" });
+      }
+
       try {
-        const performers = await performersCollection.find({}).toArray();
-        logger.info(`Fetched ${performers.length} performers`);
-        res.status(200).json(performers);
+        // Fetch paginated performers
+        const performers = await performersCollection
+          .find({})
+          .skip((pageNum - 1) * limitNum)
+          .limit(limitNum)
+          .toArray();
+
+        const total = await performersCollection.countDocuments(); // Total number of documents
+
+        // Log the result
+        logger.info(
+          `Fetched ${performers.length} performers for page ${pageNum} with limit ${limitNum}`
+        );
+
+        // Return paginated response
+        res.status(200).json({
+          page: pageNum,
+          limit: limitNum,
+          totalPages: Math.ceil(total / limitNum),
+          totalItems: total,
+          data: performers,
+        });
       } catch (error) {
-        logger.error("Error fetching performers:", error.message);
+        // Log the error
+        logger.error("Error fetching paginated performers:", error.message);
+
+        // Return the error response
         res.status(500).json({ message: "Failed to fetch performers" });
       }
     });
+
+
 
     app.listen(PORT, () => {
       logger.info(`Server is running on http://localhost:${PORT}`);
