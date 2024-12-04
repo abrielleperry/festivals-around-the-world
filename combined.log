@@ -12,3 +12,15 @@
 {"level":"info","message":"Server ready to handle requests","timestamp":"2024-12-04T17:25:53.761Z"}
 {"level":"info","message":"Fetched 630 performers","timestamp":"2024-12-04T17:26:50.528Z"}
 {"level":"info","message":"MongoDB connection closed","timestamp":"2024-12-04T17:30:40.289Z"}
+{"level":"info","message":"Connected to MongoDB successfully!","timestamp":"2024-12-04T18:28:05.484Z"}
+{"level":"info","message":"Connected to Redis successfully!","timestamp":"2024-12-04T18:28:05.496Z"}
+{"level":"info","message":"Server is running on http://localhost:5001","timestamp":"2024-12-04T18:28:05.499Z"}
+{"level":"error","message":"Error closing Redis:","timestamp":"2024-12-04T18:29:47.864Z"}
+{"level":"info","message":"Connected to MongoDB successfully!","timestamp":"2024-12-04T18:32:51.527Z"}
+{"level":"info","message":"Connected to Redis successfully!","timestamp":"2024-12-04T18:32:51.535Z"}
+{"level":"info","message":"Server is running on http://localhost:5001","timestamp":"2024-12-04T18:32:51.537Z"}
+{"level":"info","message":"Fetched 630 festivals","timestamp":"2024-12-04T18:33:07.361Z"}
+{"level":"info","message":"Connected to MongoDB successfully!","timestamp":"2024-12-04T18:38:44.917Z"}
+{"level":"info","message":"Connected to MongoDB successfully!","timestamp":"2024-12-04T18:39:03.737Z"}
+{"level":"info","message":"Connected to Redis successfully!","timestamp":"2024-12-04T18:39:03.748Z"}
+{"level":"info","message":"Server is running on http://localhost:5001","timestamp":"2024-12-04T18:39:03.752Z"}
