@@ -6,3 +6,8 @@
 {"level":"info","message":"Server ready to handle requests","timestamp":"2024-12-04T17:20:09.241Z"}
 {"level":"info","message":"Fetched 630 festival(s)","timestamp":"2024-12-04T17:21:08.993Z"}
 {"level":"info","message":"Fetched 630 festival(s)","timestamp":"2024-12-04T17:21:21.284Z"}
+{"level":"info","message":"MongoDB connection closed","timestamp":"2024-12-04T17:25:48.410Z"}
+{"level":"info","message":"Connected to MongoDB successfully!","timestamp":"2024-12-04T17:25:53.751Z"}
+{"level":"info","message":"Server is running on http://localhost:5001","timestamp":"2024-12-04T17:25:53.761Z"}
+{"level":"info","message":"Server ready to handle requests","timestamp":"2024-12-04T17:25:53.761Z"}
+{"level":"info","message":"Fetched 630 performers","timestamp":"2024-12-04T17:26:50.528Z"}

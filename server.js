@@ -32,7 +32,7 @@ const PORT = process.env.PORT || 5001;
     app.get("/festivals", async (req, res) => {
       try {
         const festivals = await festivalsCollection.find({}).toArray();
-        logger.info(`Fetched ${festivals.length} festival(s)`);
+        logger.info(`Fetched ${festivals.length} festivals`);
         res.status(200).json(festivals);
       } catch (error) {
         logger.error("Error fetching festivals:", error.message);
@@ -44,6 +44,7 @@ const PORT = process.env.PORT || 5001;
     app.get("/performers", async (req, res) => {
       try {
         const performers = await performersCollection.find({}).toArray();
+        logger.info(`Fetched ${performers.length} performers`);
         res.status(200).json(performers);
       } catch (error) {
         logger.error("Error fetching performers:", error.message);
