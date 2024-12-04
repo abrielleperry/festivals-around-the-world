@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import { MongoClient } from "mongodb";
 import cors from "cors";
+import logger from "./logger.js";
 
 dotenv.config();
 
@@ -19,12 +20,11 @@ const PORT = process.env.PORT || 5001;
   try {
     dbClient = new MongoClient(MONGO_URI);
     await dbClient.connect();
-    console.log("Connected to MongoDB successfully!");
+    logger.info("Connected to MongoDB successfully!");
 
     const database = dbClient.db(DATABASE_NAME);
     const festivalsCollection = database.collection("festivals");
-    const performersCollection = database.collection("performers")
-
+    const performersCollection = database.collection("performers");
 
     // all routes ↓
 
@@ -32,9 +32,10 @@ const PORT = process.env.PORT || 5001;
     app.get("/festivals", async (req, res) => {
       try {
         const festivals = await festivalsCollection.find({}).toArray();
+        logger.info(`Fetched ${festivals.length} festival(s)`);
         res.status(200).json(festivals);
       } catch (error) {
-        console.error("Error fetching festivals:", error.message);
+        logger.error("Error fetching festivals:", error.message);
         res.status(500).json({ message: "Failed to fetch festivals" });
       }
     });
@@ -45,22 +46,22 @@ const PORT = process.env.PORT || 5001;
         const performers = await performersCollection.find({}).toArray();
         res.status(200).json(performers);
       } catch (error) {
-        console.error("Error fetching performers:", error.message);
+        logger.error("Error fetching performers:", error.message);
         res.status(500).json({ message: "Failed to fetch performers" });
       }
     });
 
-
     app.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
+      logger.info(`Server is running on http://localhost:${PORT}`);
+      logger.info("Server ready to handle requests");
     });
 
     process.on("SIGINT", async () => {
       await dbClient.close();
-      console.log("MongoDB connection closed");
+      logger.info("MongoDB connection closed");
       process.exit(0);
     });
   } catch (err) {
-    console.error("Error connecting to MongoDB:", err.message);
+    logger.error("Error connecting to MongoDB:", err.message);
   }
 })();

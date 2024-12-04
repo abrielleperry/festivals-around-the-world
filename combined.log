@@ -1,0 +1,8 @@
+{"level":"info","message":"Server is starting","timestamp":"2024-12-04T17:12:31.224Z"}
+{"level":"error","message":"An error occurred","timestamp":"2024-12-04T17:12:31.226Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-04T17:12:31.234Z"}
+{"level":"info","message":"Connected to MongoDB successfully!","timestamp":"2024-12-04T17:20:09.233Z"}
+{"level":"info","message":"Server is running on http://localhost:5001","timestamp":"2024-12-04T17:20:09.241Z"}
+{"level":"info","message":"Server ready to handle requests","timestamp":"2024-12-04T17:20:09.241Z"}
+{"level":"info","message":"Fetched 630 festival(s)","timestamp":"2024-12-04T17:21:08.993Z"}
+{"level":"info","message":"Fetched 630 festival(s)","timestamp":"2024-12-04T17:21:21.284Z"}
