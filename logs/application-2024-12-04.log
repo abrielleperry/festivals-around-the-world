@@ -47,3 +47,38 @@
 [12/4/2024, 3:11:48 PM] INFO: Connected to MongoDB successfully!
 [12/4/2024, 3:11:48 PM] INFO: Connected to Redis successfully!
 [12/4/2024, 3:11:48 PM] INFO: Server is running on http://localhost:5001
+[12/4/2024, 3:50:46 PM] ERROR: Error closing Redis:
+[12/4/2024, 3:50:58 PM] INFO: Connected to MongoDB successfully!
+[12/4/2024, 3:50:58 PM] INFO: Connected to Redis successfully!
+[12/4/2024, 3:50:58 PM] INFO: Server is running on http://localhost:5001
+[12/4/2024, 3:55:14 PM] ERROR: Error closing Redis:
+[12/4/2024, 3:55:26 PM] INFO: Connected to MongoDB successfully!
+[12/4/2024, 3:55:27 PM] INFO: Connected to Redis successfully!
+[12/4/2024, 3:55:27 PM] INFO: Server is running on http://localhost:5001
+[12/4/2024, 4:09:34 PM] ERROR: Error closing Redis:
+[12/4/2024, 4:16:07 PM] INFO: Connected to MongoDB successfully!
+[12/4/2024, 4:16:07 PM] INFO: Connected to Redis successfully!
+[12/4/2024, 4:16:07 PM] INFO: Server is running on http://localhost:5001
+[12/4/2024, 4:23:46 PM] ERROR: Error closing Redis:
+[12/4/2024, 4:24:04 PM] INFO: Connected to MongoDB successfully!
+[12/4/2024, 4:24:04 PM] INFO: Connected to Redis successfully!
+[12/4/2024, 4:24:04 PM] INFO: Server is running on http://localhost:5001
+[12/4/2024, 4:25:47 PM] INFO: Connected to MongoDB successfully!
+[12/4/2024, 4:25:47 PM] INFO: Connected to Redis successfully!
+[12/4/2024, 4:25:47 PM] INFO: Server is running on http://localhost:5001
+[12/4/2024, 4:28:56 PM] ERROR: Error closing Redis:
+[12/4/2024, 4:29:03 PM] INFO: Connected to MongoDB successfully!
+[12/4/2024, 4:29:03 PM] INFO: Connected to Redis successfully!
+[12/4/2024, 4:29:03 PM] INFO: Server is running on http://localhost:5001
+[12/4/2024, 4:39:35 PM] INFO: Redis connection closed
+[12/4/2024, 4:39:40 PM] INFO: Connected to MongoDB successfully!
+[12/4/2024, 4:39:40 PM] INFO: Connected to Redis successfully!
+[12/4/2024, 4:39:40 PM] INFO: Server is running on http://localhost:5001
+[12/4/2024, 4:43:22 PM] ERROR: Error closing Redis:
+[12/4/2024, 4:44:25 PM] INFO: Connected to MongoDB successfully!
+[12/4/2024, 4:44:25 PM] INFO: Connected to Redis successfully!
+[12/4/2024, 4:44:25 PM] INFO: Server is running on http://localhost:5001
+[12/4/2024, 4:48:04 PM] ERROR: Error closing Redis:
+[12/4/2024, 4:48:10 PM] INFO: Connected to MongoDB successfully!
+[12/4/2024, 4:48:10 PM] INFO: Connected to Redis successfully!
+[12/4/2024, 4:48:10 PM] INFO: Server is running on http://localhost:5001

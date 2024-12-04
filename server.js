@@ -4,6 +4,7 @@ import { MongoClient, ObjectId } from "mongodb";
 import cors from "cors";
 import logger from "./logger.js";
 import { connectRedis, getCache, setCache, redisClient } from "./cache.js";
+import createSearchRoutes from "./searchRoutes.js";
 
 dotenv.config();
 
@@ -30,6 +31,8 @@ const PORT = process.env.PORT || 5001;
     const festivalsCollection = database.collection("festivals");
     const performersCollection = database.collection("performers");
 
+    app.use("/api", createSearchRoutes(festivalsCollection));
+
     try {
       await connectRedis();
       logger.info("Connected to Redis successfully!");
@@ -41,13 +44,14 @@ const PORT = process.env.PORT || 5001;
     app.get("/health", async (req, res) => {
       try {
         await dbClient.db().admin().ping();
-        const redisPing = await getCache("health-check") || "OK";
+        const redisPing = (await getCache("health-check")) || "OK";
         res.status(200).json({ status: "healthy", redis: redisPing });
       } catch (error) {
         logger.error("Health check failed:", error.message);
         res.status(500).json({ status: "unhealthy", error: error.message });
       }
     });
+
 
     /* example usage:
     http://localhost:5001/festivals/674f38206160cd3d943298e0
@@ -90,7 +94,6 @@ const PORT = process.env.PORT || 5001;
     app.get("/festivals", async (req, res) => {
       const { page = 1, limit = 10 } = req.query;
 
-      // Ensure `page` and `limit` are integers
       const pageNum = parseInt(page, 10);
       const limitNum = parseInt(limit, 10);
 
@@ -100,21 +103,18 @@ const PORT = process.env.PORT || 5001;
       }
 
       try {
-        // Fetch paginated festivals
         const festivals = await festivalsCollection
           .find({})
-          .skip((pageNum - 1) * limitNum) // Skip documents for previous pages
-          .limit(limitNum) // Limit the number of results
+          .skip((pageNum - 1) * limitNum)
+          .limit(limitNum)
           .toArray();
 
-        const total = await festivalsCollection.countDocuments(); // Total number of documents
+        const total = await festivalsCollection.countDocuments();
 
-        // Log the result
         logger.info(
           `Fetched ${festivals.length} festivals for page ${pageNum} with limit ${limitNum}`
         );
 
-        // Return paginated response
         res.status(200).json({
           page: pageNum,
           limit: limitNum,
@@ -123,10 +123,8 @@ const PORT = process.env.PORT || 5001;
           data: festivals,
         });
       } catch (error) {
-        // Log the error
         logger.error("Error fetching paginated festivals:", error.message);
 
-        // Return the error response
         res.status(500).json({ message: "Failed to fetch festivals" });
       }
     });
@@ -149,21 +147,18 @@ const PORT = process.env.PORT || 5001;
       }
 
       try {
-        // Fetch paginated performers
         const performers = await performersCollection
           .find({})
           .skip((pageNum - 1) * limitNum)
           .limit(limitNum)
           .toArray();
 
-        const total = await performersCollection.countDocuments(); // Total number of documents
+        const total = await performersCollection.countDocuments();
 
-        // Log the result
         logger.info(
           `Fetched ${performers.length} performers for page ${pageNum} with limit ${limitNum}`
         );
 
-        // Return paginated response
         res.status(200).json({
           page: pageNum,
           limit: limitNum,
@@ -172,17 +167,16 @@ const PORT = process.env.PORT || 5001;
           data: performers,
         });
       } catch (error) {
-        // Log the error
         logger.error("Error fetching paginated performers:", error.message);
 
-        // Return the error response
         res.status(500).json({ message: "Failed to fetch performers" });
       }
     });
 
 
 
-    app.listen(PORT, () => {
+
+  app.listen(PORT, () => {
       logger.info(`Server is running on http://localhost:${PORT}`);
     });
 
