@@ -24,3 +24,4 @@
 {"level":"info","message":"Connected to MongoDB successfully!","timestamp":"2024-12-04T18:39:03.737Z"}
 {"level":"info","message":"Connected to Redis successfully!","timestamp":"2024-12-04T18:39:03.748Z"}
 {"level":"info","message":"Server is running on http://localhost:5001","timestamp":"2024-12-04T18:39:03.752Z"}
+{"level":"error","message":"Error closing Redis:","timestamp":"2024-12-04T18:52:17.468Z"}

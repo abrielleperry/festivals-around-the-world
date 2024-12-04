@@ -1,0 +1,7 @@
+[12/4/2024, 1:01:51 PM] INFO: Connected to MongoDB successfully!
+[12/4/2024, 1:01:51 PM] INFO: Connected to Redis successfully!
+[12/4/2024, 1:01:51 PM] INFO: Server is running on http://localhost:5001
+[12/4/2024, 1:02:42 PM] INFO: Fetched 630 festivals
+[12/4/2024, 1:03:38 PM] INFO: Fetched 630 festivals
+[12/4/2024, 1:04:34 PM] INFO: Fetched 630 performers
+[12/4/2024, 1:05:45 PM] INFO: Fetched 630 performers
