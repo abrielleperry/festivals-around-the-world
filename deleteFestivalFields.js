@@ -29,7 +29,6 @@ const deleteFieldsFromCSV = async (inputFilePath, outputFilePath) => {
         createReadStream(inputFilePath)
             .pipe(csvParser())
             .on('headers', (headers) => {
-                // Filter out the fields to delete from the headers
                 headerKeys = headers.filter(header => !fieldsToDelete.has(header));
             })
             .on('data', (row) => {
