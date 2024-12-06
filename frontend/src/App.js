@@ -30,42 +30,57 @@ const App = () => {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [filterDate, setFilterDate] = useState(null);
+    const [isFiltered, setIsFiltered] = useState(false);
 
+    // get festivals from backend
     useEffect(() => {
-        if (!filterDate) {
+        if (!isFiltered) {
             fetchFestivals(query, page, setFestivals, setTotalPages);
         }
-    }, [query, page, filterDate]);
+    }, [query, page, isFiltered]);
 
+    // get all festivals for filtering
     useEffect(() => {
         if (filterDate) {
+            setIsFiltered(true);
             fetchFestivals("", 1, setFestivals, setTotalPages, true);
+        } else {
+            setIsFiltered(false);
         }
     }, [filterDate]);
 
+
+    // apply search festival name and date filters
     useEffect(() => {
-        const filtered = festivals.filter((festival) => {
-            const matchesSearch =
-                query === "" || festival.name.toLowerCase().includes(query.toLowerCase());
+        if (isFiltered) {
+            const filtered = festivals.filter((festival) => {
+                const matchesSearch =
+                    query === "" || festival.name.toLowerCase().includes(query.toLowerCase());
 
-            const matchesDate =
-                !filterDate || (festival.startDate && startOfDay(parseISO(festival.startDate)) >= startOfDay(filterDate));
+                const matchesDate =
+                    !filterDate ||
+                    (festival.startDate && startOfDay(parseISO(festival.startDate)) >= startOfDay(filterDate));
 
-            return matchesSearch && matchesDate;
-        });
+                return matchesSearch && matchesDate;
+            });
 
-        setFilteredFestivals(filtered);
-    }, [query, filterDate, festivals]);
+            setFilteredFestivals(filtered);
+        }
+    }, [query, filterDate, festivals, isFiltered]);
 
+    // paginate filtered data (if filtered) or display fetched data (if not filtered)
     useEffect(() => {
-        const start = (page - 1) * 5;
-        const end = start + 5;
-        setDisplayedFestivals(filteredFestivals.slice(start, end));
-    }, [page, filteredFestivals]);
+        if (isFiltered) {
+            const start = (page - 1) * 5;
+            const end = start + 5;
+            setDisplayedFestivals(filteredFestivals.slice(start, end));
+        } else {
+            setDisplayedFestivals(festivals);
+        }
+    }, [page, festivals, filteredFestivals, isFiltered]);
 
     const handleSearch = () => {
-        setPage(1);
-        fetchFestivals(query, page, setFestivals, setTotalPages);
+        setPage(1); // reset to page 1 after cleared filter
     };
 
     return (
@@ -74,7 +89,11 @@ const App = () => {
             <SearchBox query={query} setQuery={setQuery} handleSearch={handleSearch} />
             <DateFilter onDateChange={setFilterDate} />
             <FestivalList festivals={displayedFestivals} />
-            <Pagination page={page} totalPages={Math.ceil(filteredFestivals.length / 5)} setPage={setPage} />
+            <Pagination
+                page={page}
+                totalPages={isFiltered ? Math.ceil(filteredFestivals.length / 5) : totalPages}
+                setPage={setPage}
+            />
         </div>
     );
 };
