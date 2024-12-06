@@ -1,0 +1,95 @@
+[12/6/2024, 12:22:19 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 12:22:19 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 12:30:30 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 12:30:30 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 12:32:00 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 12:32:00 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 12:49:29 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 12:49:29 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:04:43 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:04:43 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:26:05 PM] INFO: Redis connection closed
+[12/6/2024, 1:28:09 PM] INFO: Connected to MongoDB successfully!
+[12/6/2024, 1:28:09 PM] INFO: Connected to Redis successfully!
+[12/6/2024, 1:28:09 PM] INFO: Server is running on http://localhost:5001
+[12/6/2024, 1:28:13 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:28:13 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:28:54 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:28:54 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:29:48 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:29:48 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:30:23 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:30:23 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:33:19 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:33:19 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:33:51 PM] INFO: Redis connection closed
+[12/6/2024, 1:33:53 PM] INFO: Connected to MongoDB successfully!
+[12/6/2024, 1:33:53 PM] INFO: Connected to Redis successfully!
+[12/6/2024, 1:33:53 PM] INFO: Server is running on http://localhost:5001
+[12/6/2024, 1:33:57 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:33:57 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:35:37 PM] INFO: Redis connection closed
+[12/6/2024, 1:35:49 PM] INFO: Connected to MongoDB successfully!
+[12/6/2024, 1:35:49 PM] INFO: Connected to Redis successfully!
+[12/6/2024, 1:35:49 PM] INFO: Server is running on http://localhost:5001
+[12/6/2024, 1:35:57 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:35:57 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:37:06 PM] ERROR: Error closing Redis:
+[12/6/2024, 1:37:15 PM] INFO: Connected to MongoDB successfully!
+[12/6/2024, 1:37:15 PM] INFO: Connected to Redis successfully!
+[12/6/2024, 1:37:15 PM] INFO: Server is running on http://localhost:5001
+[12/6/2024, 1:37:24 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:37:25 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:38:05 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 1:38:05 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:00:39 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:00:39 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:10:07 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:14:51 PM] INFO: Redis connection closed
+[12/6/2024, 2:14:53 PM] INFO: Connected to MongoDB successfully!
+[12/6/2024, 2:14:53 PM] INFO: Connected to Redis successfully!
+[12/6/2024, 2:14:53 PM] INFO: Server is running on http://localhost:5001
+[12/6/2024, 2:15:48 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:15:48 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:22:14 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:22:14 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:23:21 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:25:12 PM] INFO: Redis connection closed
+[12/6/2024, 2:25:14 PM] INFO: Connected to MongoDB successfully!
+[12/6/2024, 2:25:15 PM] INFO: Connected to Redis successfully!
+[12/6/2024, 2:25:15 PM] INFO: Server is running on http://localhost:5001
+[12/6/2024, 2:36:26 PM] ERROR: Error closing Redis:
+[12/6/2024, 2:36:36 PM] INFO: Connected to MongoDB successfully!
+[12/6/2024, 2:36:36 PM] INFO: Connected to Redis successfully!
+[12/6/2024, 2:36:36 PM] INFO: Server is running on http://localhost:5001
+[12/6/2024, 2:43:25 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:43:25 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:50:01 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:50:01 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:50:21 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:50:25 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:50:34 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:50:34 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:50:39 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:53:27 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:53:27 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:54:19 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:54:19 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:55:55 PM] ERROR: Error closing Redis:
+[12/6/2024, 2:56:03 PM] INFO: Connected to MongoDB successfully!
+[12/6/2024, 2:56:03 PM] INFO: Connected to Redis successfully!
+[12/6/2024, 2:56:03 PM] INFO: Server is running on http://localhost:5001
+[12/6/2024, 2:56:10 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:56:10 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:58:13 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:58:13 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:59:10 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 2:59:10 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 3:01:51 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 3:01:51 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 3:04:04 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 3:04:04 PM] INFO: Fetched 5 festivals for page 1 with limit 5
+[12/6/2024, 3:05:43 PM] INFO: Redis connection closed
+[12/6/2024, 3:05:47 PM] INFO: Connected to MongoDB successfully!
+[12/6/2024, 3:05:47 PM] INFO: Connected to Redis successfully!
+[12/6/2024, 3:05:47 PM] INFO: Server is running on http://localhost:5001
