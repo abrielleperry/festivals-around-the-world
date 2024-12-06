@@ -1,9 +1,14 @@
 import styles from "./Card.module.css";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 
 const Card = ({ name, description, addressLocality, country, startDate, endDate, image }) => {
-    const formattedStartDate = startDate ? format(new Date(startDate), "MMMM d, yyyy") : "TBD";
-    const formattedEndDate = endDate ? format(new Date(endDate), "MMMM d, yyyy") : "TBD";
+    const formattedStartDate = startDate
+        ? format(parseISO(startDate), "MMMM d, yyyy")
+        : "TBD";
+    const formattedEndDate = endDate
+        ? format(parseISO(endDate), "MMMM d, yyyy")
+        : "TBD";
+
     return (
         <div className={styles.card}>
             <img className={styles.image} src={image} alt={name} />

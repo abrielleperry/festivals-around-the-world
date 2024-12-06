@@ -93,43 +93,31 @@ const PORT = process.env.PORT || 5001;
     */
 // backend/server.js
     app.get("/festivals", async (req, res) => {
-      const { page = 1, limit = 10 } = req.query;
+        const { page = 1, limit = 10, all } = req.query;
 
-      const pageNum = parseInt(page, 10);
-      const limitNum = parseInt(limit, 10);
+        const query = {};
+        let festivals;
 
-      if (isNaN(pageNum) || isNaN(limitNum) || pageNum <= 0 || limitNum <= 0) {
-        logger.warn("Invalid page or limit values provided.");
-        return res.status(400).json({ message: "Invalid page or limit values" });
-      }
+        if (all === "true") {
+            festivals = await festivalsCollection.find(query).toArray();
+        } else {
+            festivals = await festivalsCollection
+                .find(query)
+                .skip((page - 1) * parseInt(limit, 10))
+                .limit(parseInt(limit, 10))
+                .toArray();
+        }
 
-      try {
-        const festivals = await festivalsCollection
-          .find({})
-          .skip((pageNum - 1) * limitNum)
-          .limit(limitNum)
-          .toArray();
-
-        console.log(festivals); // Debugging line to check festival objects
-
-        const total = await festivalsCollection.countDocuments();
-
-        logger.info(
-          `Fetched ${festivals.length} festivals for page ${pageNum} with limit ${limitNum}`
-        );
-
+        const total = await festivalsCollection.countDocuments(query);
         res.status(200).json({
-          page: pageNum,
-          limit: limitNum,
-          totalPages: Math.ceil(total / limitNum),
-          totalItems: total,
-          data: festivals,
+            page: parseInt(page, 10),
+            limit: parseInt(limit, 10),
+            totalPages: Math.ceil(total / limit),
+            totalItems: total,
+            data: festivals,
         });
-      } catch (error) {
-        logger.error("Error fetching paginated festivals:", error.message);
-        res.status(500).json({ message: "Failed to fetch festivals" });
-      }
     });
+
 
 
 
