@@ -2,12 +2,14 @@ import styles from "./Card.module.css";
 import { format, parseISO } from "date-fns";
 
 const Card = ({ name, description, addressLocality, country, startDate, endDate, image }) => {
-    const formattedStartDate = startDate
-        ? format(parseISO(startDate), "MMMM d, yyyy")
-        : "TBD";
-    const formattedEndDate = endDate
-        ? format(parseISO(endDate), "MMMM d, yyyy")
-        : "TBD";
+    const formattedStartDate =
+        startDate && !isNaN(Date.parse(startDate))
+            ? format(parseISO(startDate), "MMMM d, yyyy")
+            : "TBD";
+    const formattedEndDate =
+        endDate && !isNaN(Date.parse(endDate))
+            ? format(parseISO(endDate), "MMMM d, yyyy")
+            : "TBD";
 
     return (
         <div className={styles.card}>
@@ -23,3 +25,4 @@ const Card = ({ name, description, addressLocality, country, startDate, endDate,
 };
 
 export default Card;
+
