@@ -24,33 +24,33 @@ const fetchFestivals = async (query, page, setFestivals, setTotalPages, fetchAll
 
 const App = () => {
     const [query, setQuery] = useState("");
-    const [festivals, setFestivals] = useState([]); // Holds fetched data (paginated or all)
-    const [filteredFestivals, setFilteredFestivals] = useState([]); // Holds filtered data
-    const [displayedFestivals, setDisplayedFestivals] = useState([]); // Holds paginated data
+    const [festivals, setFestivals] = useState([]);
+    const [filteredFestivals, setFilteredFestivals] = useState([]);
+    const [displayedFestivals, setDisplayedFestivals] = useState([]);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [filterDate, setFilterDate] = useState(null);
-    const [isFiltered, setIsFiltered] = useState(false); // Tracks if filters are active
+    const [isFiltered, setIsFiltered] = useState(false);
 
-    // Fetch festivals from backend
+    // get festivals from backend
     useEffect(() => {
         if (!isFiltered) {
             fetchFestivals(query, page, setFestivals, setTotalPages);
         }
     }, [query, page, isFiltered]);
 
-    // Fetch all festivals for filtering
+    // get all festivals for filtering
     useEffect(() => {
         if (filterDate) {
-            setIsFiltered(true); // Activate filtering
-            fetchFestivals("", 1, setFestivals, setTotalPages, true); // Fetch all festivals
+            setIsFiltered(true);
+            fetchFestivals("", 1, setFestivals, setTotalPages, true);
         } else {
-            setIsFiltered(false); // Reset to backend pagination
+            setIsFiltered(false);
         }
     }, [filterDate]);
 
 
-    // Apply search and date filters
+    // apply search festival name and date filters
     useEffect(() => {
         if (isFiltered) {
             const filtered = festivals.filter((festival) => {
@@ -61,26 +61,26 @@ const App = () => {
                     !filterDate ||
                     (festival.startDate && startOfDay(parseISO(festival.startDate)) >= startOfDay(filterDate));
 
-                return matchesSearch && matchesDate; // Festival must match both conditions
+                return matchesSearch && matchesDate;
             });
 
             setFilteredFestivals(filtered);
         }
     }, [query, filterDate, festivals, isFiltered]);
 
-    // Paginate filtered data (if filtered) or display fetched data (if not filtered)
+    // paginate filtered data (if filtered) or display fetched data (if not filtered)
     useEffect(() => {
         if (isFiltered) {
             const start = (page - 1) * 5;
             const end = start + 5;
             setDisplayedFestivals(filteredFestivals.slice(start, end));
         } else {
-            setDisplayedFestivals(festivals); // Use backend paginated data
+            setDisplayedFestivals(festivals);
         }
     }, [page, festivals, filteredFestivals, isFiltered]);
 
     const handleSearch = () => {
-        setPage(1); // Reset to page 1 on a new search
+        setPage(1); // reset to page 1 after cleared filter
     };
 
     return (
