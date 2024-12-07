@@ -1,4 +1,6 @@
-#  Custom API From Scratch
+# Custom API From Scratch
+
+![festivals around the world](https://files.oaiusercontent.com/file-4eZbSshzEB5d5MrMCNzZZJ?se=2024-12-07T20:23:31Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age=604800,%20immutable,%20private&rscd=attachment;%20filename=90ac7b04-a34a-40da-9d7a-ecae6546629d.webp&sig=rX5pwA0dAUAzE4aE2vVdRSoTc1H6lISgAMbAo6s/j6c=)
 
 # Festivals Around the World
 
