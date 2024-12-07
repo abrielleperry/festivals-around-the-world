@@ -9,7 +9,6 @@ import createSearchRoutes from "./searchRoutes.js";
 dotenv.config();
 
 
-
 const MONGO_URI = process.env.MONGO_URI;
 const DATABASE_NAME = process.env.DATABASE_NAME;
 const PORT = process.env.PORT || 5001;
