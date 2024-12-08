@@ -89,7 +89,6 @@ const PORT = process.env.PORT || 5001;
     http://localhost:5001/festivals?page=1&limit=5
     http://localhost:5001/festivals
     */
-// backend/server.js
     app.get("/festivals", async (req, res) => {
         const { page = 1, limit = 10, all } = req.query;
 
