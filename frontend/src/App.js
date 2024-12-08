@@ -4,6 +4,7 @@ import SearchBox from "./components/SearchBox";
 import Pagination from "./components/Pagination";
 import DateFilter from "./components/DateFilter";
 import { parseISO, startOfDay } from "date-fns";
+import Header from "./components/Header";
 
 const fetchFestivals = async (query, page, setFestivals, setTotalPages, fetchAll = false) => {
     const endpoint = fetchAll
@@ -85,6 +86,8 @@ const App = () => {
 
     return (
         <div>
+          <Header />
+            <main>
             <h1>Festival Explorer</h1>
             <SearchBox query={query} setQuery={setQuery} handleSearch={handleSearch} />
             <DateFilter onDateChange={setFilterDate} />
@@ -94,6 +97,7 @@ const App = () => {
                 totalPages={isFiltered ? Math.ceil(filteredFestivals.length / 5) : totalPages}
                 setPage={setPage}
             />
+            </main>
         </div>
     );
 };

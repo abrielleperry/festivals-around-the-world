@@ -8,8 +8,6 @@ import createSearchRoutes from "./searchRoutes.js";
 
 dotenv.config();
 
-const redisHost = process.env.REDIS_HOST;
-const redisPort = process.env.REDIS_PORT;
 
 const MONGO_URI = process.env.MONGO_URI;
 const DATABASE_NAME = process.env.DATABASE_NAME;
