@@ -11,6 +11,7 @@ const FestivalList = ({ festivals }) => {
                         key={festival._id}
                         name={festival.name}
                         description={festival.description || "No description available"}
+                        streetAddress={festival['location/address/streetAddress'] || "Unknown"}
                         addressLocality={festival['location/address/addressLocality'] || "Unknown"}
                         country={festival['location/address/addressCountry/name'] || "Unknown Country"}
                         startDate={festival.startDate || "TBD"}
