@@ -5,7 +5,9 @@ import Pagination from "./components/Pagination";
 import DateFilter from "./components/DateFilter";
 import { parseISO, startOfDay } from "date-fns";
 import Header from "./components/Header";
-import { useGeolocation } from "./hooks/useGeolocation";
+import { useDebounce } from "./hooks/useDebounce";
+
+
 
 const fetchFestivals = async (query, page, setFestivals, setTotalPages, fetchAll = false) => {
     const endpoint = fetchAll
@@ -33,9 +35,7 @@ const App = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [filterDate, setFilterDate] = useState(null);
     const [isFiltered, setIsFiltered] = useState(false);    
-    const { locationInfo, locationError } = useGeolocation();
-
-    console.log({ locationError, locationInfo });
+    const debouncedQuery = useDebounce(query, 300);
 
     useEffect(() => {
         if (!isFiltered) {
@@ -82,6 +82,10 @@ const App = () => {
     const handleSearch = () => {
         setPage(1);
     };
+
+    useEffect(() => {
+        fetchFestivals(debouncedQuery, page, setFestivals, setTotalPages, false, filterDate);
+    }, [debouncedQuery, page, filterDate]);
 
     return (
         <div>
