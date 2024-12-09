@@ -19,6 +19,11 @@
             "date": 1733598664431,
             "name": "logs/redis-2024-12-07.log",
             "hash": "ca218d1b11c55c8df3b965323182a37e973b880514d7ad0b465f10ddf1c653b7"
+        },
+        {
+            "date": 1733647045235,
+            "name": "logs/redis-2024-12-08.log",
+            "hash": "1c8f3e1a72dc63f54041cc96e26b8cdd0d75954aa61b87312db2b283406cb527"
         }
     ],
     "hashType": "sha256"

@@ -5,6 +5,9 @@ import Pagination from "./components/Pagination";
 import DateFilter from "./components/DateFilter";
 import { parseISO, startOfDay } from "date-fns";
 import Header from "./components/Header";
+import { useDebounce } from "./hooks/useDebounce";
+
+
 
 const fetchFestivals = async (query, page, setFestivals, setTotalPages, fetchAll = false) => {
     const endpoint = fetchAll
@@ -31,16 +34,15 @@ const App = () => {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [filterDate, setFilterDate] = useState(null);
-    const [isFiltered, setIsFiltered] = useState(false);
+    const [isFiltered, setIsFiltered] = useState(false);    
+    const debouncedQuery = useDebounce(query, 300);
 
-    // get festivals from backend
     useEffect(() => {
         if (!isFiltered) {
             fetchFestivals(query, page, setFestivals, setTotalPages);
         }
     }, [query, page, isFiltered]);
 
-    // get all festivals for filtering
     useEffect(() => {
         if (filterDate) {
             setIsFiltered(true);
@@ -50,8 +52,6 @@ const App = () => {
         }
     }, [filterDate]);
 
-
-    // apply search festival name and date filters
     useEffect(() => {
         if (isFiltered) {
             const filtered = festivals.filter((festival) => {
@@ -69,7 +69,6 @@ const App = () => {
         }
     }, [query, filterDate, festivals, isFiltered]);
 
-    // paginate filtered data (if filtered) or display fetched data (if not filtered)
     useEffect(() => {
         if (isFiltered) {
             const start = (page - 1) * 5;
@@ -81,22 +80,26 @@ const App = () => {
     }, [page, festivals, filteredFestivals, isFiltered]);
 
     const handleSearch = () => {
-        setPage(1); // reset to page 1 after cleared filter
+        setPage(1);
     };
+
+    useEffect(() => {
+        fetchFestivals(debouncedQuery, page, setFestivals, setTotalPages, false, filterDate);
+    }, [debouncedQuery, page, filterDate]);
 
     return (
         <div>
-          <Header />
+            <Header />
             <main>
-            <h1>Festival Explorer</h1>
-            <SearchBox query={query} setQuery={setQuery} handleSearch={handleSearch} />
-            <DateFilter onDateChange={setFilterDate} />
-            <FestivalList festivals={displayedFestivals} />
-            <Pagination
-                page={page}
-                totalPages={isFiltered ? Math.ceil(filteredFestivals.length / 5) : totalPages}
-                setPage={setPage}
-            />
+                <h1>Festival Explorer</h1>
+                <SearchBox query={query} setQuery={setQuery} handleSearch={handleSearch} />
+                <DateFilter onDateChange={setFilterDate} />
+                <FestivalList festivals={displayedFestivals} />
+                <Pagination
+                    page={page}
+                    totalPages={isFiltered ? Math.ceil(filteredFestivals.length / 5) : totalPages}
+                    setPage={setPage}
+                />
             </main>
         </div>
     );
