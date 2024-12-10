@@ -9,6 +9,8 @@ import { useDebounce } from "./hooks/useDebounce";
 
 
 
+
+
 const fetchFestivals = async (query, page, setFestivals, setTotalPages, fetchAll = false) => {
     const endpoint = fetchAll
         ? `http://localhost:5001/festivals?all=true`
@@ -34,7 +36,7 @@ const App = () => {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [filterDate, setFilterDate] = useState(null);
-    const [isFiltered, setIsFiltered] = useState(false);    
+    const [isFiltered, setIsFiltered] = useState(false);
     const debouncedQuery = useDebounce(query, 300);
 
     useEffect(() => {
