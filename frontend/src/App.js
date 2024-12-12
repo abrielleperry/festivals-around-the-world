@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import FestivalList from "./components/FestivalList";
 import SearchBox from "./components/SearchBox";
 import Pagination from "./components/Pagination";
 import DateFilter from "./components/DateFilter";
-import { parseISO, startOfDay } from "date-fns";
 import Header from "./components/Header";
+import { parseISO, startOfDay } from "date-fns";
 import { useDebounce } from "./hooks/useDebounce";
-
-
+import About from "./pages/About";
+import FestivalDetails from "./pages/FestivalDetails";
 
 const fetchFestivals = async (query, page, setFestivals, setTotalPages, fetchAll = false) => {
     const endpoint = fetchAll
@@ -34,7 +35,7 @@ const App = () => {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [filterDate, setFilterDate] = useState(null);
-    const [isFiltered, setIsFiltered] = useState(false);    
+    const [isFiltered, setIsFiltered] = useState(false);
     const debouncedQuery = useDebounce(query, 300);
 
     useEffect(() => {
@@ -88,20 +89,31 @@ const App = () => {
     }, [debouncedQuery, page, filterDate]);
 
     return (
-        <div>
+        <Router>
             <Header />
             <main>
-                <h1>Festival Explorer</h1>
-                <SearchBox query={query} setQuery={setQuery} handleSearch={handleSearch} />
-                <DateFilter onDateChange={setFilterDate} />
-                <FestivalList festivals={displayedFestivals} />
-                <Pagination
-                    page={page}
-                    totalPages={isFiltered ? Math.ceil(filteredFestivals.length / 5) : totalPages}
-                    setPage={setPage}
-                />
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <>
+                                <h1>Festival Explorer</h1>
+                                <SearchBox query={query} setQuery={setQuery} handleSearch={handleSearch} />
+                                <DateFilter onDateChange={setFilterDate} />
+                                <FestivalList festivals={displayedFestivals} />
+                                <Pagination
+                                    page={page}
+                                    totalPages={isFiltered ? Math.ceil(filteredFestivals.length / 5) : totalPages}
+                                    setPage={setPage}
+                                />
+                            </>
+                        }
+                    />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/festival/:id" element={<FestivalDetails />} />
+                </Routes>
             </main>
-        </div>
+        </Router>
     );
 };
 
