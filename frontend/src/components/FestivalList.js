@@ -15,6 +15,9 @@ const FestivalList = ({ festivals }) => {
                     startDate={festival.startDate || "TBD"}
                     endDate={festival.endDate || "TBD"}
                     image={festival.image}
+                    locationName={festival["location/name"] || "Unknown Location"}
+                    postalCode={festival["location/address/postalCode"] || ""}
+
                 />
             ))}
         </div>
