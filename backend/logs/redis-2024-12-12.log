@@ -1,0 +1,3 @@
+[12/12/2024, 10:56:26 AM] INFO: Connected to MongoDB successfully!
+[12/12/2024, 10:56:26 AM] INFO: Connected to Redis successfully!
+[12/12/2024, 10:56:26 AM] INFO: Server is running on http://localhost:5001

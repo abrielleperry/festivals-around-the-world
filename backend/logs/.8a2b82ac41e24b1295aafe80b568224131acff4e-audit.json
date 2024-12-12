@@ -21,9 +21,19 @@
             "hash": "ca218d1b11c55c8df3b965323182a37e973b880514d7ad0b465f10ddf1c653b7"
         },
         {
-            "date": 1733647045235,
+            "date": 1733707301759,
             "name": "logs/redis-2024-12-08.log",
-            "hash": "1c8f3e1a72dc63f54041cc96e26b8cdd0d75954aa61b87312db2b283406cb527"
+            "hash": "e51399a8ead2b1b287dcdbdf3cd6ef770ef7a2596069847a534962a163d042c5"
+        },
+        {
+            "date": 1733860471830,
+            "name": "logs/redis-2024-12-10.log",
+            "hash": "506c012da1897c81fffba4b9d60ad1d65f90aed4987fc26174a145ed915357f9"
+        },
+        {
+            "date": 1734022585357,
+            "name": "logs/redis-2024-12-12.log",
+            "hash": "aa8de538b2247e08af30a3a287e1f4cfafe48612ea4492085ff87097c8e36d1a"
         }
     ],
     "hashType": "sha256"
